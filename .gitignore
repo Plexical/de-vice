@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+\.#*
+.Python
+docs/_build
+bin/
+lib/
+include/
+share/
+*.egg
