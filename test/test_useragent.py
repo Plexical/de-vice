@@ -1,3 +1,5 @@
+from mock import patch
+
 from device import useragent
 
 from .user_agents import user_agents
@@ -20,6 +22,13 @@ def test_calculate_poc():
 def test_uaencode():
     assert (useragent.uaencode("Opera/5.0 (SunOS 5.8 sun4u; U) [en]") ==
             "Opera/5.0_(SunOS_5.8_sun4u*_U)_[en]")
+
+def test_calculate_unknown_queries():
+    analyzer = useragent.Analyzer() # XXX Lame, learn to use funcargs instead
+    with patch.object(analyzer, 'query') as mocked_q:
+        mocked_q.return_value = {'complete': True}
+        analyzer.analyze('Dummy')
+    assert mocked_q.called
 
 def test_analysis(agent):
     analyzer = useragent.Analyzer() # XXX Lame, learn to use funcargs instead
