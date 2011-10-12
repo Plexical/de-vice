@@ -7,6 +7,8 @@ KQ = {'type': 'desktop', 'engine': 'khtml'}
 GWK = {'type': 'desktop', 'engine': 'webkit'} # Generic WebKit
 GGK = {'type': 'desktop', 'engine': 'gecko'} # Generic Gecko
 OLD = {'type': 'desktop', 'engine': 'unknown'}
+IOS = {'type': 'mobile', 'engine': 'webkit'}
+ECLAIR = {'type': 'mobile', 'engine': 'webkit'}
 
 user_agents = (
     ("Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; "
@@ -54,6 +56,27 @@ user_agents = (
     ("Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.14) "
     "Gecko/20101020 Conkeror/0.9.2 (Debian-0.9.2+git100804-1)", GGK),
     ("Mozilla/4.5 (compatible; OmniWeb/4.2.1-v435.9; Mac_PowerPC)", OLD),
+    ("Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Nexus One "
+     "Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 "
+     "Mobile Safari/530.17", ECLAIR),
+    ("Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; en-us) "
+    "AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 "
+    "Safari/525.20", IOS),
+    ("Mozilla/5.0 (iPhone Simulator; U; CPU iPhone OS 3_1_3 like Mac OS X; "
+    "en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 "
+    "Safari/528.16", IOS),
+    ("Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) "
+     "AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 "
+     "Safari/531.21.10", IOS),
+    ("Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) "
+     "AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 "
+     "Safari/528.16", IOS),
+    ("Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X; ja-jp) "
+     "AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 "
+     "Safari/6533.18.5", IOS),
+    ("Mozilla/5.0(iPad; U; CPU OS 4_3 like Mac OS X; en-us) "
+     "AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F191 "
+     "Safari/6533.18.5", IOS)
 )
 
 mobile_agents = (
