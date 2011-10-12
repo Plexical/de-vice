@@ -80,20 +80,6 @@ user_agents = (
 )
 
 mobile_agents = (
-    "Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Nexus One Build/ERE27) "
-    "AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17",
-    "Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; en-us) "
-    "AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 "
-    "Safari/525.20",
-    "Mozilla/5.0 (iPhone Simulator; U; CPU iPhone OS 3_1_3 like Mac OS X; "
-    "en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 "
-    "Safari/528.16",
-    "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) "
-    "AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 "
-    "Safari/531.21.10",
-    "Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) "
-    "AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 "
-    "Safari/528.16",
     "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.10pre) Gecko/20100325 "
     "Fennec/1.0a2",
 )
