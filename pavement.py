@@ -19,6 +19,8 @@ setup(
     version=meta.version,
     author='Jacob Oscarson',
     author_email='jacob@plexical.com',
+    install_requires=open(os.path.join('deps',
+                                       'install.txt')).readlines()
 )
 
 @task
@@ -27,6 +29,7 @@ def boot_dev():
     sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
     import virtualenv
     virtualenv.create_environment('.')
+    sh('./bin/pip install -r deps/install.txt')
     sh('./bin/pip install -r deps/developer.txt')
 
 @task
