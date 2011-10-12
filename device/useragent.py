@@ -25,6 +25,9 @@ partial_matchers = (
          svg=True)
     )
 
+def uaencode(ua):
+    return ua.replace(' ', '_').replace(';', '*')
+
 class Analyzer(object):
 
     basedata = {
