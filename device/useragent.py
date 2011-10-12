@@ -28,6 +28,12 @@ partial_matchers = (
 def uaencode(ua):
     return ua.replace(' ', '_').replace(';', '*')
 
+class DummyCache(dict):
+    retreive = lambda s, k: s.get(k, None)
+
+    def store(self, key, data):
+        self[key] = data
+
 class Analyzer(object):
 
     basedata = {
@@ -38,7 +44,9 @@ class Analyzer(object):
         'engine': 'unknown'
         }
 
-    def __init__(self, cache):
+    def __init__(self, cache=None):
+        if cache is None:
+            cache = DummyCache()
         self.cache = cache
 
     def analyze(self, ua):
