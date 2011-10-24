@@ -22,13 +22,21 @@ setup(
 )
 
 @task
-def boot_dev():
+def virtualenv():
     "Prepares a checked out directory for development"
-    sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
-    import virtualenv
-    virtualenv.create_environment('.')
-    sh('./bin/pip install -r deps/install.txt')
-    sh('./bin/pip install -r deps/developer.txt')
+    if not os.path.exists(os.path.join('bin', 'pip')):
+        sys.path.insert(0, os.path.join('deps', 'virtualenv.zip'))
+        import virtualenv
+        virtualenv.create_environment('.')
+    else:
+        print('Virtualenv already set up')
+
+@needs('virtualenv')
+@task
+def env():
+    "Ensure virtualenv exists and is up to date"
+    sh('./bin/pip install -r deps/install.txt --upgrade')
+    sh('./bin/pip install -r deps/developer.txt --upgrade')
 
 @task
 def clean():
