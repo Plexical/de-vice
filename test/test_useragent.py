@@ -1,16 +1,16 @@
 import types
-from mock import patch
+import mock
 
 from device import useragent
 
-from .user_agents import user_agents
+import user_agents
 
 def pytest_funcarg__analyzer(request):
     return useragent.Analyzer()
 
 def pytest_generate_tests(metafunc):
     if "agent" in metafunc.funcargnames:
-        for agent in user_agents:
+        for agent in user_agents.user_agents:
             metafunc.addcall(funcargs={'agent': agent})
 
 def test_create_simplest():
@@ -41,10 +41,8 @@ def test_analysis(analyzer, agent):
         assert info[attr] == expected
 
 def test_uaencode_called(analyzer):
-    analyzer._webservice = types.MethodType(lambda self, ua:
-                                                {'complete': True,
-                                                 'ua_enc': ua},
-                                            analyzer)
-    res = analyzer.analyze("A Dummy;browser")
+    with mock.patch.object(analyzer, '_webservice') as ws:
+        ws.return_value = {'complete': True}
+        res = analyzer.analyze("A Dummy;browser")
+    assert ws.call_args[0][0] == 'A_Dummy*browser'
     assert res['complete']
-    assert res['ua_enc'] == "A_Dummy*browser"
