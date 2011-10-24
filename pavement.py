@@ -9,8 +9,6 @@ import sys
 from paver.easy import *
 from paver.setuputils import setup
 
-from paver import virtual
-
 from device import meta
 
 setup(
