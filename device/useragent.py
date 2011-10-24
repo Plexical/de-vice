@@ -1,6 +1,9 @@
 import sys
 import re
 import hashlib
+import json
+
+import requests
 
 digest = lambda ua: hashlib.md5(ua).hexdigest()
 
@@ -34,6 +37,8 @@ class DummyCache(dict):
 
     def store(self, key, data):
         self[key] = data
+
+class WebServiceFailed(Exception): pass
 
 class Analyzer(object):
 
@@ -79,11 +84,20 @@ class Analyzer(object):
         return info
 
     def _webservice(self, ua):
-        return {'complete': True}
+        res = requests.get('http://cgi.plexical.com/dimensions.py',
+                           params={'ua': ua})
+        if res.ok:
+            return json.loads(res.content)
+        else:
+            raise WebserviceFailed(("Plexical WURFL web service failed with "
+                                    "status code %d" % status_code))
 
-    query = lambda s, ua: s._webservice(uaencode(ua))
+    def query(self, ua):
+        struct = self._webservice(uaencode(ua))
+        return {'complete': True,
+                'width': struct['resolution_width'],
+                'height': struct['resolution_height']}
 
 if __name__ == '__main__':
     analyzer = Analyzer()
-    import json
     print(json.dumps(analyzer.analyze(sys.argv[1])))

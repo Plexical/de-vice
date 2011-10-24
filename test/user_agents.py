@@ -10,6 +10,17 @@ OLD = {'type': 'desktop', 'engine': 'unknown'}
 IOS = {'type': 'mobile', 'engine': 'webkit'}
 ECLAIR = {'type': 'mobile', 'engine': 'webkit'}
 
+'Provided as stand-alone value known to cause a webservice lookup.'
+n1 = """Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Nexus One
+ Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0
+ Mobile Safari/530.17"""
+
+'Known response from a webservice query /w `n1`'
+n1_response = """{"resolution_width": 480, "physical_screen_width": 50,
+"resolution_height": 800, "max_image_width": 320,
+"physical_screen_height": 100, "dual_orientation": false,
+"max_image_height": 720}\n"""
+
 user_agents = (
     ("Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; "
     ".NET CLR 1.1.4322)", IE),
@@ -56,9 +67,7 @@ user_agents = (
     ("Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.14) "
     "Gecko/20101020 Conkeror/0.9.2 (Debian-0.9.2+git100804-1)", GGK),
     ("Mozilla/4.5 (compatible; OmniWeb/4.2.1-v435.9; Mac_PowerPC)", OLD),
-    ("Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; Nexus One "
-     "Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 "
-     "Mobile Safari/530.17", ECLAIR),
+    (n1, ECLAIR),
     ("Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0_1 like Mac OS X; en-us) "
     "AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5B108 "
     "Safari/525.20", IOS),
