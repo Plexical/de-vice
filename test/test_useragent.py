@@ -1,3 +1,4 @@
+import types
 from mock import patch
 
 from device import useragent
@@ -38,4 +39,12 @@ def test_analysis(analyzer, agent):
     assert info['complete']
     for attr, expected in attrs.iteritems():
         assert info[attr] == expected
-        
+
+def test_uaencode_called(analyzer):
+    analyzer._webservice = types.MethodType(lambda self, ua:
+                                                {'complete': True,
+                                                 'ua_enc': ua},
+                                            analyzer)
+    res = analyzer.analyze("A Dummy;browser")
+    assert res['complete']
+    assert res['ua_enc'] == "A_Dummy*browser"

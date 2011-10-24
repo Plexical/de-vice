@@ -77,5 +77,7 @@ class Analyzer(object):
 
         return info
 
-    def query(self, ua):
+    def _webservice(self, ua):
         return {'complete': True}
+
+    query = lambda s, ua: s._webservice(uaencode(ua))
