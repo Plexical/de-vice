@@ -1,3 +1,4 @@
+import sys
 import re
 import hashlib
 
@@ -81,3 +82,8 @@ class Analyzer(object):
         return {'complete': True}
 
     query = lambda s, ua: s._webservice(uaencode(ua))
+
+if __name__ == '__main__':
+    analyzer = Analyzer()
+    import json
+    print(json.dumps(analyzer.analyze(sys.argv[1])))
