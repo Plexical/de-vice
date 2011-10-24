@@ -4,17 +4,13 @@ from device import useragent
 
 from .user_agents import user_agents
 
+def pytest_funcarg__analyzer(request):
+    return useragent.Analyzer()
+
 def pytest_generate_tests(metafunc):
-    args = {}
-
-    if 'analyzer' in metafunc.funcargnames:
-        args['analyzer'] = useragent.Analyzer()
-
     if "agent" in metafunc.funcargnames:
         for agent in user_agents:
-            metafunc.addcall(funcargs=dict(agent=agent, **args))
-    else:
-        metafunc.addcall(funcargs=args)
+            metafunc.addcall(funcargs={'agent': agent})
 
 def test_create_simplest():
     assert useragent.Analyzer()
