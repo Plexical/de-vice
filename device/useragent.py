@@ -5,6 +5,8 @@ import json
 
 import requests
 
+from cache import DummyCache
+
 digest = lambda ua: hashlib.md5(ua).hexdigest()
 
 def rule(matches, **changes):
