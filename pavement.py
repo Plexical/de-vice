@@ -6,6 +6,12 @@ Copyright 2011 Plexical. See LICENCE for permissions.
 import os
 import sys
 
+# Tox doesn't have the Paver dependency at this point
+try:
+    import paver
+except ImportError:
+    sys.path.insert(0, os.path.join('deps', 'paver-minilib.zip'))
+
 from paver.easy import *
 from paver.setuputils import setup
 

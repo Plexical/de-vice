@@ -9,3 +9,4 @@ include/
 share/
 *.egg*
 poc.py
+.tox/
