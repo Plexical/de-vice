@@ -13,7 +13,7 @@ from device import meta
 
 setup(
     name=meta.name,
-    packages=('device'),
+    packages=('device',),
     version=meta.version,
     author='Jacob Oscarson',
     author_email='jacob@plexical.com',
