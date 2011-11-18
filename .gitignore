@@ -8,3 +8,4 @@ lib/
 include/
 share/
 *.egg
+poc.py
